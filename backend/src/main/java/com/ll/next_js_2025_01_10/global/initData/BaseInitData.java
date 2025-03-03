@@ -1,5 +1,5 @@
 
-package com.ll.next_js_2025_01_10.global.baseInit;
+package com.ll.next_js_2025_01_10.global.initData;
 
 import com.ll.next_js_2025_01_10.domain.member.member.entity.Member;
 import com.ll.next_js_2025_01_10.domain.member.member.service.MemberService;

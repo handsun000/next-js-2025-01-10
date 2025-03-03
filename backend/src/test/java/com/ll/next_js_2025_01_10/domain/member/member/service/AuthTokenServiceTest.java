@@ -1,7 +1,6 @@
 package com.ll.next_js_2025_01_10.domain.member.member.service;
 
 import com.ll.next_js_2025_01_10.domain.member.member.entity.Member;
-import com.ll.next_js_2025_01_10.standard.util.Ut;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.junit.jupiter.api.DisplayName;
@@ -78,12 +77,12 @@ public class AuthTokenServiceTest {
     void t3() {
         Map<String, Object> payload = Map.of("name", "Paul", "age", "23");
 
-        String jwtStr = Ut.jwt.toString(jwtSecretKey, accessTokenExpirationSec, payload);
+        String jwtStr = com.ll.spring_doc_2025_01_09.standard.util.Ut.jwt.toString(jwtSecretKey, accessTokenExpirationSec, payload);
 
         assertThat(jwtStr).isNotBlank();
-        assertThat(Ut.jwt.isValid(jwtSecretKey, jwtStr)).isTrue();
+        assertThat(com.ll.spring_doc_2025_01_09.standard.util.Ut.jwt.isValid(jwtSecretKey, jwtStr)).isTrue();
 
-        Map<String, Object> parsedPayload = Ut.jwt.payload(jwtSecretKey, jwtStr);
+        Map<String, Object> parsedPayload = com.ll.spring_doc_2025_01_09.standard.util.Ut.jwt.payload(jwtSecretKey, jwtStr);
 
         assertThat(parsedPayload).containsAllEntriesOf(payload);
     }
@@ -96,7 +95,7 @@ public class AuthTokenServiceTest {
         String accessToken = authTokenService.genAccessToken(member);
 
         assertThat(accessToken).isNotBlank();
-        assertThat(Ut.jwt.isValid(jwtSecretKey, accessToken)).isTrue();
+        assertThat(com.ll.spring_doc_2025_01_09.standard.util.Ut.jwt.isValid(jwtSecretKey, accessToken)).isTrue();
 
         Map<String, Object> parsedPayload = authTokenService.payload(accessToken);
         assertThat(parsedPayload).containsAllEntriesOf(
@@ -116,7 +115,7 @@ public class AuthTokenServiceTest {
 
         assertThat(accessToken).isNotBlank();
 
-        assertThat(Ut.jwt.isValid(jwtSecretKey, accessToken)).isTrue();
+        assertThat(com.ll.spring_doc_2025_01_09.standard.util.Ut.jwt.isValid(jwtSecretKey, accessToken)).isTrue();
 
         Map<String, Object> parsedPayload = authTokenService.payload(accessToken);
 

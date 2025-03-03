@@ -3,7 +3,6 @@ package com.ll.next_js_2025_01_10.domain.post.post.service;
 import com.ll.next_js_2025_01_10.domain.member.member.entity.Member;
 import com.ll.next_js_2025_01_10.domain.post.post.entity.Post;
 import com.ll.next_js_2025_01_10.domain.post.post.repository.PostRepository;
-import com.ll.next_js_2025_01_10.standard.util.Ut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -72,7 +71,7 @@ public class PostService {
             int page,
             int pageSize
     ) {
-        if (Ut.str.isBlank(searchKeyword)) return findByListedPaged(listed, page, pageSize);
+        if (com.ll.spring_doc_2025_01_09.standard.util.Ut.str.isBlank(searchKeyword)) return findByListedPaged(listed, page, pageSize);
 
         PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.by(Sort.Order.desc("id")));
 
@@ -91,7 +90,7 @@ public class PostService {
     }
 
     public Page<Post> findByAuthorPaged(Member author, String searchKeywordType, String searchKeyword, int page, int pageSize) {
-        if (Ut.str.isBlank(searchKeyword)) return findByAuthorPaged(author, page, pageSize);
+        if (com.ll.spring_doc_2025_01_09.standard.util.Ut.str.isBlank(searchKeyword)) return findByAuthorPaged(author, page, pageSize);
 
         PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.by(Sort.Order.desc("id")));
 
