@@ -23,11 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header>
+          <a href="/">홈</a>
+          <a href="/about">소개</a>
+        </header>
         {children}
+        <footer>Copyright 2025.</footer>
       </body>
     </html>
   );
