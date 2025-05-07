@@ -1,9 +1,9 @@
 package com.ll.next_js_2025_01_10.domain.post.post.controller;
 
-import com.ll.next-js-2025-01-10.domain.member.member.entity.Member;
-import com.ll.next-js-2025-01-10.domain.member.member.service.MemberService;
-import com.ll.next-js-2025-01-10.domain.post.post.entity.Post;
-import com.ll.next-js-2025-01-10.domain.post.post.service.PostService;
+import com.ll.next_js_2025_01_10.domain.member.member.entity.Member;
+import com.ll.next_js_2025_01_10.domain.member.member.service.MemberService;
+import com.ll.next_js_2025_01_10.domain.post.post.entity.Post;
+import com.ll.next_js_2025_01_10.domain.post.post.service.PostService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
