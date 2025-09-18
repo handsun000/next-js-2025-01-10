@@ -196,22 +196,22 @@ export interface components {
         };
         PostCommentDto: {
             /** Format: int64 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
+            modifyDate: string;
             /** Format: int64 */
-            postId?: number;
+            postId: number;
             /** Format: int64 */
-            authorId?: number;
-            authorName?: string;
-            content?: string;
+            authorId: number;
+            authorName: string;
+            content: string;
         };
         RsDataPostCommentDto: {
-            resultCode?: string;
-            msg?: string;
-            data?: components["schemas"]["PostCommentDto"];
+            resultCode: string;
+            msg: string;
+            data: components["schemas"]["PostCommentDto"];
         };
         PostModifyReqBody: {
             title: string;
@@ -221,23 +221,23 @@ export interface components {
         };
         PostWithContentDto: {
             /** Format: int64 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
+            modifyDate: string;
             /** Format: int64 */
-            authorId?: number;
-            authorName?: string;
-            title?: string;
-            content?: string;
-            published?: boolean;
-            listed?: boolean;
+            authorId: number;
+            authorName: string;
+            title: string;
+            content: string;
+            published: boolean;
+            listed: boolean;
         };
         RsDataPostWithContentDto: {
-            resultCode?: string;
-            msg?: string;
-            data?: components["schemas"]["PostWithContentDto"];
+            resultCode: string;
+            msg: string;
+            data: components["schemas"]["PostWithContentDto"];
         };
         PostWriteReqBody: {
             title: string;
@@ -251,22 +251,22 @@ export interface components {
         };
         MemberDto: {
             /** Format: int64 */
-            id?: number;
+            id: number;
             /** Format: date-time */
-            createDate?: string;
+            createDate: string;
             /** Format: date-time */
-            modifyDate?: string;
-            nickname?: string;
+            modifyDate: string;
+            nickname: string;
         };
         MemberLoginResBody: {
-            item?: components["schemas"]["MemberDto"];
-            apiKey?: string;
-            accessToken?: string;
+            item: components["schemas"]["MemberDto"];
+            apiKey: string;
+            accessToken: string;
         };
         RsDataMemberLoginResBody: {
-            resultCode?: string;
-            msg?: string;
-            data?: components["schemas"]["MemberLoginResBody"];
+            resultCode: string;
+            msg: string;
+            data: components["schemas"]["MemberLoginResBody"];
         };
         MemberJoinReqBody: {
             username: string;
@@ -274,9 +274,9 @@ export interface components {
             nickname: string;
         };
         RsDataMemberDto: {
-            resultCode?: string;
-            msg?: string;
-            data?: components["schemas"]["MemberDto"];
+            resultCode: string;
+            msg: string;
+            data: components["schemas"]["MemberDto"];
         };
         PageDtoPostDto: {
             /** Format: int32 */
@@ -305,16 +305,16 @@ export interface components {
         };
         PostStatisticResBody: {
             /** Format: int64 */
-            totalPostCount?: number;
+            totalPostCount: number;
             /** Format: int64 */
-            totalPublishedPostCount?: number;
+            totalPublishedPostCount: number;
             /** Format: int64 */
-            totalListedPostCount?: number;
+            totalListedPostCount: number;
         };
         RsDataVoid: {
-            resultCode?: string;
-            msg?: string;
-            data?: Record<string, never>;
+            resultCode: string;
+            msg: string;
+            data: Record<string, never>;
         };
     };
     responses: never;
