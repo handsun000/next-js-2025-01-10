@@ -2,6 +2,7 @@ package com.ll.next_js_2025_01_10.global.initData;
 
 import com.ll.next_js_2025_01_10.domain.member.member.service.MemberService;
 import com.ll.next_js_2025_01_10.domain.post.post.service.PostService;
+import com.ll.next_js_2025_01_10.standard.util.Ut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -23,10 +24,10 @@ public class DevInitData {
     @Bean
     public ApplicationRunner devInitDataApplicationRunner() {
         return args -> {
-            com.ll.spring_doc_2025_01_09.standard.util.Ut.file.downloadByHttp("http://localhost:8080/v3/api-docs/apiV1", ".");
+            Ut.file.downloadByHttp("http://localhost:8080/v3/api-docs/apiV1", ".");
 
             String cmd = "echo y | npx --package typescript --package openapi-typescript openapi-typescript apiV1.json -o ../frontend/src/lib/backend/apiV1/schema.d.ts";
-            com.ll.spring_doc_2025_01_09.standard.util.Ut.cmd.runAsync(cmd);
+            Ut.cmd.runAsync(cmd);
         };
     }
 }

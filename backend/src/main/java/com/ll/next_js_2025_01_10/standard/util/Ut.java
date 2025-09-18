@@ -1,4 +1,4 @@
-package com.ll.spring_doc_2025_01_09.standard.util;
+package com.ll.next_js_2025_01_10.standard.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;

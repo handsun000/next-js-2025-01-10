@@ -1,6 +1,7 @@
 package com.ll.next_js_2025_01_10.global.security;
 
 import com.ll.next_js_2025_01_10.global.rsData.RsData;
+import com.ll.next_js_2025_01_10.standard.util.Ut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,7 +54,7 @@ public class SecurityConfig {
 
                                             response.setStatus(401);
                                             response.getWriter().write(
-                                                    com.ll.spring_doc_2025_01_09.standard.util.Ut.json.toString(
+                                                    Ut.json.toString(
                                                             new RsData("401-1", "사용자 인증정보가 올바르지 않습니다.")
                                                     )
                                             );
@@ -65,7 +66,7 @@ public class SecurityConfig {
 
                                             response.setStatus(403);
                                             response.getWriter().write(
-                                                    com.ll.spring_doc_2025_01_09.standard.util.Ut.json.toString(
+                                                    Ut.json.toString(
                                                             new RsData("403-1", "접근 권한이 없습니다.")
                                                     )
                                             );
