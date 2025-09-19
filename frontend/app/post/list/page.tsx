@@ -13,17 +13,17 @@ export default async function Page({
     }
 }) {
 
-    const { searchKeyword = "", searchKeywordType = "title" } = searchParams;
-    const respone = await fetch("http://localhost:8080/api/v1/posts")
+    const { searchKeyword = "", searchKeywordType = "title" } = await searchParams;
+    const respone = await fetch(`http://localhost:8080/api/v1/posts?searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`)
     const body: PostItemPageDto = await respone.json();
 
     return <div>
         <form>
-            <select name="searchKeywordType">
+            <select name="searchKeywordType" defaultValue={searchKeywordType}>
                 <option value="title">제목</option>
                 <option value="content">내용</option>
             </select>
-            <input type="text" name="searchKeyword" />
+            <input type="text" name="searchKeyword" defaultValue={searchKeyword} />
             <button type="submit">검색</button>
         </form>
 
