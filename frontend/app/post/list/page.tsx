@@ -4,11 +4,29 @@ type PostDto = components["schemas"]["PostDto"];
 
 type PostItemPageDto = components["schemas"]["PageDtoPostDto"];
 
-export default async function Page() {
+export default async function Page({
+    searchParams,
+}: {
+    searchParams: {
+        searchKeywordType?: "title" | "content";
+        searchKeyword?: string;
+    }
+}) {
+
+    const { searchKeyword = "", searchKeywordType = "title" } = searchParams;
     const respone = await fetch("http://localhost:8080/api/v1/posts")
     const body: PostItemPageDto = await respone.json();
 
     return <div>
+        <form>
+            <select name="searchKeywordType">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+            </select>
+            <input type="text" name="searchKeyword" />
+            <button type="submit">검색</button>
+        </form>
+
         <div>
             currentPageNumber: {body.currentPageNumber}
         </div>
