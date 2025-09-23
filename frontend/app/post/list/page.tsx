@@ -1,8 +1,9 @@
-import type { components } from "@/src/lib/backend/apiV1/schema";
+import createClient from "openapi-fetch";
+import type { paths, components } from "@/src/lib/backend/apiV1/schema";
 
-type PostDto = components["schemas"]["PostDto"];
-
-type PostItemPageDto = components["schemas"]["PageDtoPostDto"];
+const client = createClient<paths>({
+    baseUrl: "http://localhost:8080",
+})
 
 export default async function Page({
     searchParams,
@@ -14,8 +15,16 @@ export default async function Page({
 }) {
 
     const { searchKeyword = "", searchKeywordType = "title" } = await searchParams;
-    const respone = await fetch(`http://localhost:8080/api/v1/posts?searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`)
-    const body: PostItemPageDto = await respone.json();
+    const respone = await client.GET("/api/v1/posts", {
+        params: {
+            query: {
+                searchKeyword: searchKeyword,
+                searchKeywordType: searchKeywordType,
+            }
+        }
+    });
+
+    const responeBody = respone.data;
 
     return <div>
         <form>
@@ -28,23 +37,23 @@ export default async function Page({
         </form>
 
         <div>
-            currentPageNumber: {body.currentPageNumber}
+            currentPageNumber: {responeBody?.currentPageNumber}
         </div>
 
         <div>
-            pageSize: {body.pageSize}
+            pageSize: {responeBody?.pageSize}
         </div>
 
         <div>
-            totalPages: {body.totalPages}
+            totalPages: {responeBody?.totalPages}
         </div>
 
-        <div>totalItems: {body.totalItems}</div>
+        <div>totalItems: {responeBody?.totalItems}</div>
 
         <hr />
 
         <ul>
-            {body.items?.map((item: PostDto) => (
+            {responeBody?.items.map((item) => (
                 <li key={item.id} className="border-[2px] border-[red] my-3">
                     <div>id: {item.id}</div>
                     <div>createDate : {item.createDate}</div>
