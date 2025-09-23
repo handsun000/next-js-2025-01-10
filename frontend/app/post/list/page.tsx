@@ -29,7 +29,7 @@ export default async function Page({
         }
     });
 
-    const responeBody = respone.data!!;
+    const responseBody = respone.data!!;
 
     return <div>
         <form>
@@ -50,23 +50,38 @@ export default async function Page({
         </form>
 
         <div>
-            currentPageNumber: {responeBody.currentPageNumber}
+            currentPageNumber: {responseBody.currentPageNumber}
         </div>
 
         <div>
-            pageSize: {responeBody.pageSize}
+            pageSize: {responseBody.pageSize}
         </div>
 
         <div>
-            totalPages: {responeBody.totalPages}
+            totalPages: {responseBody.totalPages}
         </div>
 
-        <div>totalItems: {responeBody.totalItems}</div>
+        <div>totalItems: {responseBody.totalItems}</div>
 
         <hr />
 
+        <div className="flex my-2 gap-2">
+            {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
+                (pageNum) => (
+                    <Link
+                        key={pageNum}
+                        className={`px-2 py-1 border rounded ${pageNum === responseBody.currentPageNumber ? "text-red-500" : ""
+                            }`}
+                        href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
+                    >
+                        {pageNum}
+                    </Link>
+                )
+            )}
+        </div>
+
         <ul>
-            {responeBody.items.map((item) => (
+            {responseBody.items.map((item) => (
                 <li key={item.id} className="border-[2px] border-[red] my-3">
                     <div>id: {item.id}</div>
                     <div>createDate : {item.createDate}</div>
@@ -80,12 +95,13 @@ export default async function Page({
             ))}
         </ul>
 
-        <div>
-            {Array.from({ length: responeBody.totalPages }, (_, i) => i + 1).map(
+        <div className="flex my-2 gap-2">
+            {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
                 (pageNum) => (
                     <Link
                         key={pageNum}
-                        className="mx-1 px-2 py-1 border rounded"
+                        className={`px-2 py-1 border rounded ${pageNum === responseBody.currentPageNumber ? "text-red-500" : ""
+                            }`}
                         href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
                     >
                         {pageNum}
