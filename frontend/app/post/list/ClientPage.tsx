@@ -2,6 +2,7 @@
 
 import type { components } from "@/src/lib/backend/apiV1/schema";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ClientPage({
     searchKeyword,
@@ -17,10 +18,23 @@ export default function ClientPage({
     page: number;
     responseBody: components["schemas"]["PageDtoPostDto"];
 }) {
+
+    const router = useRouter();
+
     return <div>
         <form
             onSubmit={(e) => {
                 e.preventDefault();
+
+                const formData = new FormData(e.target as HTMLFormElement);
+                const searchKeyword = formData.get("searchKeyword") as string;
+                const searchKeywordType = formData.get("searchKeywordType") as string;
+                const page = formData.get("page") as string;
+                const pageSize = formData.get("pageSize") as string;
+
+                router.push(
+                    `?page=${page}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`
+                );
             }}
         >
             <input type="hidden" name="page" value="1" />
