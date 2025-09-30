@@ -3,7 +3,7 @@
 import type { components } from "@/src/lib/backend/apiV1/schema";
 import Link from "next/link";
 
-export default async function ClientPage({
+export default function ClientPage({
     searchKeyword,
     searchKeywordType,
     page,
