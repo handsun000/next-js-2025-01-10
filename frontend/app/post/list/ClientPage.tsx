@@ -18,7 +18,11 @@ export default function ClientPage({
     responseBody: components["schemas"]["PageDtoPostDto"];
 }) {
     return <div>
-        <form>
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+            }}
+        >
             <input type="hidden" name="page" value="1" />
             <select name="pageSize" defaultValue={pageSize}>
                 <option disabled>페이지당 행 수</option>
