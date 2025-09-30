@@ -1,5 +1,6 @@
 package com.ll.next_js_2025_01_10.domain.post.post.service;
 
+
 import com.ll.next_js_2025_01_10.domain.member.member.entity.Member;
 import com.ll.next_js_2025_01_10.domain.post.post.entity.Post;
 import com.ll.next_js_2025_01_10.domain.post.post.repository.PostRepository;
@@ -23,6 +24,8 @@ public class PostService {
     }
 
     public Post write(Member member, String title, String content, boolean published, boolean listed) {
+        Post.builder().build();
+
         Post post = Post.builder()
                 .title(title)
                 .content(content)
